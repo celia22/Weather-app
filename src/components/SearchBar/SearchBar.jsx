@@ -1,6 +1,6 @@
 import React, {Component } from "react"
 import axios from 'axios';
-import Forecast from "../Forecast/Forecast"
+import CurrentWeather from "../CurrentWeather/CurrentWeather"
 require('dotenv').config();
 
 class SearchBar extends Component {
@@ -10,7 +10,8 @@ class SearchBar extends Component {
     this.state = {
         city: "",
         status: "loading",
-        query: ""
+        query: "",
+
     }
   }
 
@@ -44,7 +45,7 @@ class SearchBar extends Component {
         <button onClick={this.handleQuery}>Submit</button>
         
       </div>
-    <Forecast city={city}/>
+      {city ? <CurrentWeather city={city} /> : <p></p>}    
     
     </>
     )
