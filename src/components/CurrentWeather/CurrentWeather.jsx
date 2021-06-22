@@ -41,7 +41,7 @@ handleLogo = (src) => {
 
 
     return(
-      <div className="m-44 w-64 h-64 rounded-md bg-gray-300">
+      <div className="m-24 w-64 h-64 rounded-md bg-gray-300">
         <h1>Current Weather</h1>
         <div>
           <h5>{city.name}</h5>
