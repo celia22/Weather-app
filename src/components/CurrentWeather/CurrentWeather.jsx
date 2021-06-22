@@ -36,8 +36,8 @@ handleLogo = (src) => {
 
   render(){
     const { city } = this.state
-    console.log("city", city)
-    console.log("src", src)
+    // console.log("city", city)
+    // console.log("src", src)
 
 
     return(

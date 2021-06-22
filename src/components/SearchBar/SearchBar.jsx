@@ -1,6 +1,7 @@
 import React, {Component } from "react"
 import axios from 'axios';
-import CurrentWeather from "../CurrentWeather/CurrentWeather"
+import CurrentWeather from "../CurrentWeather/CurrentWeather";
+import Forecast from "../Forecast/Forecast"
 require('dotenv').config();
 
 class SearchBar extends Component {
@@ -9,6 +10,7 @@ class SearchBar extends Component {
     super(props)
     this.state = {
         city: "",
+        forecast: "",
         status: "loading",
         query: "",
 
@@ -17,6 +19,14 @@ class SearchBar extends Component {
 
   handleQuery = () => {
     const { query } = this.state 
+       axios.defaults.baseURL = 'http://api.openweathermap.org';  
+    axios.get(`/data/2.5/forecast?q=${query}&appid=${process.env.REACT_APP_API_KEY}`)
+    .then((response) => {
+        this.setState({
+          forecast: response.data,
+        })
+        console.log(this.state.forecast)
+    })
     axios.defaults.baseURL = 'http://api.openweathermap.org';  
     axios.get(`/data/2.5/weather?q=${query}&appid=${process.env.REACT_APP_API_KEY}`)
     .then((response) => {
@@ -24,6 +34,7 @@ class SearchBar extends Component {
           city: response.data,
         })
     })
+    
     .catch((error) => {
         console.log('error', error)
     })
@@ -35,7 +46,7 @@ class SearchBar extends Component {
   }
 
   render(){
-    const { city } = this.state;
+    const { city, forecast } = this.state;
     //console.log("searhcb", city)
     return(
       <>
@@ -44,9 +55,11 @@ class SearchBar extends Component {
         <input className="h-8 rounded-md" type="text" label="text" name="value" placeholder="Search a new location" value={this.state.query} onChange={this.handleChange}/> 
         <button onClick={this.handleQuery}>Submit</button>
         
-      </div>
-      {city ? <CurrentWeather city={city} /> : <p></p>}    
-    
+      </div>     
+      
+      {city ? <CurrentWeather city={city} /> : <p></p>}   
+      {forecast ? <Forecast forecast={forecast} /> : <p></p>}        
+      
     </>
     )
   }
