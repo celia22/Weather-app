@@ -10,9 +10,10 @@ function App() {
     <div className="Weather_app">
       <Router>
         <Route path="/" component={SearchBar} />
-      </Router>
-      <Router>
-        <Route path="/search" component={SearchBar} />
+        <Route path="/search">
+          <CurrentWeather />
+          <Forecast />
+        </Route>
       </Router>
     </div>
   );
