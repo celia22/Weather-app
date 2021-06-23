@@ -1,8 +1,11 @@
 import React, {Component } from "react"
 
 import LogoSwitch from "../LogoSwitch/LogoSwitch"
-
-let src;
+import BG_clouds from "./BG_clouds.png"
+import BG_rain from "./BG_rain.png"
+import BG_snow from "./BG_snow.png"
+import BG_sunny from "./BG_sunny.png"
+import BG_storm from "./BG_storm.png"
 
 class CurrentWeather extends Component {
 constructor(props){
@@ -41,7 +44,7 @@ handleLogo = (src) => {
 
 
     return(
-      <div className="m-24 w-64 h-64 rounded-md bg-gray-300">
+      <div className="mt-24 ml-64 w-72 h-76 rounded-md" style={{ backgroundImage: city.weather[0].main === "Clouds" ? `url(${BG_clouds})` : city.weather[0].main === "Drizzle" ? `url(${BG_rain})` : city.weather[0].main === "Rain" ? `url(${BG_rain})`: city.weather[0].main === "Snow" ? `url(${BG_snow})` : city.weather[0].main === "Clear" ? `url(${BG_sunny})` : `url(${BG_storm})` }}>
         <h1>Current Weather</h1>
         <div>
           <h5>{city.name}</h5>

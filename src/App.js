@@ -2,12 +2,17 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import SearchBar from "./components/SearchBar/SearchBar";
+import CurrentWeather from "./components/CurrentWeather/CurrentWeather";
+import Forecast from "./components/Forecast/Forecast";
 
 function App() {
   return (
     <div className="Weather_app">
       <Router>
         <Route path="/" component={SearchBar} />
+      </Router>
+      <Router>
+        <Route path="/search" component={SearchBar} />
       </Router>
     </div>
   );

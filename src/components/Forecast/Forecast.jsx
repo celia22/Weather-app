@@ -6,33 +6,35 @@ const Forecast = (props) => {
 
   const forecast = props.forecast    
  
+  console.log(forecast)  
 
 const toCelsius = (k) => {
   let celsius = k - 273
   return celsius.toFixed(0)
 }
 
-// const handleLogo = () => {
-//   let  src = < LogoSwitch weather= {forecast.list[0].weather[0].main } />
-//   return src
-//  }
+let  src;
+const handleLogo = () => {
+  src = < LogoSwitch weather= {forecast.list[0].weather[0].main } />
+  return src
+ }
 
-  const list = forecast.list
+
   const forecastArray = []
 
-  for ( let i = 3; i < list.length; i += 8){
-    forecastArray.push(list[i])
+  for ( let i = 3; i < forecast.list.length; i += 8){
+    forecastArray.push(forecast.list[i])
   }
   console.log(forecastArray)  
 
    return(
-      forecastArray.map((item,index) => {
-        return(
-        <div className="flex flex-row flex-nowrap w-full  bg-blue-300">          
-          <div className="m-12 w-44 h-44 rounded-md bg-gray-300" key={index}>
-            <h1>Forecast</h1>
+    <div className="flex bg-blue-300">  
+    <h1>Daily Forecast</h1>   
+     {forecastArray.map((item,index) => {
+        return(               
+          <div className="mt-12 mr-12 w-40 h-40 rounded-md bg-gray-300" key={index}>
             <div>        
-              <img src="" alt="weather logo" />          
+              <img src={src}alt="weather logo" />          
               <h5>{item.weather[0].main}</h5>
             </div>
           
@@ -43,10 +45,10 @@ const toCelsius = (k) => {
             <div className="flex">
               <img className="w-8 items-center" src="../image/termometro.png" alt="termometro logo"></img><h5>Min temp: {toCelsius(item.main.temp_min)}º</h5>
               </div>  
-          </div>
-        </div> 
+          </div>       
           )
-         })
+         })}
+    </div>     
    )
 }
 
