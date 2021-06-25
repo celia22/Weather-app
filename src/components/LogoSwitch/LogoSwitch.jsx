@@ -1,5 +1,3 @@
-// import React from "react"
-
 const LogoSwitch = (props) => {
 
   const weather = props.weather  
@@ -31,11 +29,12 @@ const LogoSwitch = (props) => {
   }
 
   console.log(weather)
+  console.log("src",src)
   
   return (
-    <p>{src}</p>
-  )
-
+    <img className="w-8" src= {src} alt="logo" />
+  )  
+    
 }
 
 export default LogoSwitch;

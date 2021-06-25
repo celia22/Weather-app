@@ -5,30 +5,29 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import CurrentWeather from "./components/CurrentWeather/CurrentWeather";
 import Forecast from "./components/Forecast/Forecast";
 
-function App() {
-  return (
-    <div className="Weather_app">
-      <Router>
-        <Route path="/" component={SearchBar} />
-        <Route path="/search">
-          <CurrentWeather />
-          <Forecast />
-        </Route>
-      </Router>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      city: "",
+      forecast: "",
+    };
+  }
+
+  render() {
+    return (
+      <div className="Weather_app">
+        <Router>
+          <Route path="/" component={SearchBar} />
+
+          <Route path="/search">
+            <CurrentWeather />
+            <Forecast />
+          </Route>
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;
-
-/* <Router>
-<Switch>
-  <Route exact path="/beers/:id" component={SingleBeer} />
-  <Route path="/random-beer" component={RandomBeer} />
-  <Route path="/new-beer" component={NewBeer} />
-  <Route path="/beers">
-    <AllBeers search={this.searchBeerQuery} />
-  </Route>
-  <Route path="/" component={HomePage} />
-</Switch>
-</Router> */
