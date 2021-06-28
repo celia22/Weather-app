@@ -9,18 +9,7 @@ import BG_storm from "./BG_storm.png"
 
 const CurrentWeather = (props) => {
 
-  const city = props.city;
-  let src = "";
-
- const timeConverter = (UNIX_timestamp) => {
-  let a = new Date(UNIX_timestamp * 1000);
-
-  let hour = a.getHours();
-  let min = a.getMinutes();
-
-  let time = ' ' + hour + ':' + min ;
-  return time;
-}
+const city = props.city;
 
 const kelvinToCelsius = (kelvin) => {
   const celsius = kelvin - 273 
@@ -28,41 +17,36 @@ const kelvinToCelsius = (kelvin) => {
 }
 
 
-
-
   return(
-   <> 
-    <h1>Current Weather</h1>
-      <div className="mt-16 ml-64 w-72 h-76 border border-gray-600" style={{ backgroundImage: city.weather[0].main === "Clouds" ? `url(${BG_clouds})` : city.weather[0].main === "Drizzle" ? `url(${BG_rain})` : city.weather[0].main === "Rain" ? `url(${BG_rain})`: city.weather[0].main === "Snow" ? `url(${BG_snow})` : city.weather[0].main === "Clear" ? `url(${BG_sunny})` : `url(${BG_storm})` }}>
+   <>
+   <div>         
+        <div className="mt-6 mx-auto w-1/3 h-72 p-6 rounded-md shadow-lg border-2 border-gray-600" style={{ backgroundImage: city.weather[0].main === "Clouds" ? `url(${BG_clouds})` : city.weather[0].main === "Drizzle" ? `url(${BG_rain})` : city.weather[0].main === "Rain" ? `url(${BG_rain})`: city.weather[0].main === "Snow" ? `url(${BG_snow})` : city.weather[0].main === "Clear" ? `url(${BG_sunny})` : `url(${BG_storm})` }}>
        
         <div>
-          <h5>{city.name}</h5>
-          <h5>{city.sys.country}</h5>   
+          <h5 className="text-3xl">{city.name}, {city.sys.country}</h5>
         </div>           
         
-        <div>       
-        
-       < LogoSwitch weather= {city.weather[0].main } />            
-          <h5>{city.weather[0].main}</h5>
+        <div className="p-4">  
+       < LogoSwitch  weather= {city.weather[0].main } />            
+          <h5 className="text-xs">{city.weather[0].main}</h5>
         </div>
 
-        <div className="flex"> 
-         <img className="w-8 items-center" src="../image/termometro.png" alt="termometro logo"></img>  <h5>Max temp: {kelvinToCelsius(city.main.temp_max)}º</h5>
+        <div className="flex flex-col"> 
+        <div className="flex"><img className="w-8 items-center " src="../image/heat.png" alt="termometro logo"></img>  <h5 className="text-3xl">{kelvinToCelsius(city.main.temp)}º  </h5>
+         <h5 className="text-lg ml-2"> Feels like {kelvinToCelsius(city.main.feels_like)}º</h5></div> 
         </div>
 
-        <div className="flex">
-        <img className="w-8 items-center" src="../image/termometro.png" alt="termometro logo"></img><h5>Min temp: {kelvinToCelsius(city.main.temp_min)}º</h5>
-        </div>       
-        
-        <div className="flex">
-          <img className="w-8 items-center" src="../image/sunrise.png" alt="sunrise logo"></img> <h5>Sunrise time: {timeConverter(city.sys.sunrise)}</h5> 
+     
+        <div className="flex mt-3">
+          <img className="w-8 items-center " src="../image/wind.png" alt="termometro logo"></img> <h5><strong>Wind Speed: {city.wind.speed}</strong></h5> 
         </div>
 
-        <div className="flex items-center">
-          <img className="w-8" src="../image/sunset.png" alt="sunrise logo"></img><h5>Sunset time: {timeConverter(city.sys.sunset)}</h5>
+        <div className="flex items-center mt-3">
+          <img className="w-8 items-center " src="../image/humidity.png" alt="termometro logo"></img><h5><strong>Humidity %: {city.main.humidity}</strong></h5>
         </div>  
        
       </div>
+      </div> 
    </>   
     )
 }
