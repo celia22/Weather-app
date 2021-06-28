@@ -5,6 +5,7 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import CurrentWeather from "./components/CurrentWeather/CurrentWeather";
 import Forecast from "./components/Forecast/Forecast";
 import Home from "./components/Home/Home";
+import Favourites from "./components/Favourites/Favourites";
 
 class App extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class App extends Component {
     this.state = {
       city: "",
       forecast: "",
+      main: true,
     };
   }
 
@@ -30,9 +32,13 @@ class App extends Component {
   render() {
     const { city, forecast } = this.state;
     return (
-      <div className="Weather_app">
+      <div style={{ backgroundColor: "rgb(222, 233, 245)" }}>
         <Router>
           <Switch>
+            <Route path="/favourites">
+              <Favourites />
+            </Route>
+
             <Route path="/search">
               <SearchBar
                 city={this.handleCity}
@@ -41,6 +47,7 @@ class App extends Component {
               {city ? <CurrentWeather city={city} /> : ""}
               {forecast ? <Forecast forecast={forecast} /> : ""}
             </Route>
+
             <Route path="/">
               <SearchBar
                 city={this.handleCity}
