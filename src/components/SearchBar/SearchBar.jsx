@@ -55,8 +55,8 @@ class SearchBar extends Component {
        {this.state.status === "main" ? (
          <div className="h-14 bg-gradient-to-r from-blue-400 via-blue-900 to-black">
          <Link to="/" ><h1 className="text-white text-2xl p-3 "> Your Weather App</h1>  </Link>   
-         <input className="h-16  w-2/4  bg-white absolute top-80 right-1/4" type="text" label="text" name="value" placeholder="Search a new location" value={this.state.query} onChange={this.handleChange}/> 
-         <Link to="/search" className="relative top-72 left-2/3  z-50" onClick={this.handleQuery}>{element}</Link>     
+         <input className="h-16  w-2/4  bg-white relative top-52 left-1/4" type="text" label="text" name="value" placeholder="Search a new location" value={this.state.query} onChange={this.handleChange}/> 
+         <Link to="/search" className="absolute top-72 left-2/3  z-50" onClick={this.handleQuery}>{element}</Link>     
          </div>   
        ) : (
         <div className="h-14 bg-gradient-to-r from-blue-400 via-blue-900 to-black">
