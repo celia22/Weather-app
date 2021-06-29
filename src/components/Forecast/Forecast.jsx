@@ -10,8 +10,6 @@ const toCelsius = (k) => {
   let celsius = k - 273
   return celsius.toFixed(0)
 }
-console.log("forecast", forecast)
-
 
   const forecastMorning = []
 
@@ -37,7 +35,7 @@ console.log("forecast", forecast)
               <h3>{getWeekDay(item.dt_txt)}</h3>       
             <h4><strong>Morning </strong></h4>
             < LogoSwitch weather= {item.weather[0].main } />          
-              <h5>{item.weather[0].main}</h5>
+              <h5>{item.weather[0].description}</h5>
             </div>
           
             <div className="flex"> 

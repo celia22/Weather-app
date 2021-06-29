@@ -6,7 +6,7 @@ class Favourites extends Component{
   constructor(props){
     super(props)
     this.state = {
-      favArray: [],
+      favArray: this.props.favArray,
     }
   }
 
@@ -32,8 +32,14 @@ class Favourites extends Component{
   }
   
   render(){
+    console.log("favArr", this.state.favArray)
     return(
-      <h1>testing</h1> 
+      
+      <div>
+        <h1>testing</h1> 
+        <p>FavArray {this.state.favArray}</p>
+      </div>
+
     )
   }
 }
