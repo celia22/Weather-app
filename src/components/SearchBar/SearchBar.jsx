@@ -51,7 +51,7 @@ class SearchBar extends Component {
     if (prevProps.city !== this.props.city){ 
       this.setState({
         city: this.props.city,
-        main: true,
+        main: false,
       })
     }
   }
@@ -59,6 +59,7 @@ class SearchBar extends Component {
   render(){
     
     return(
+
       <>     
        {this.state.main ? (
          <div className="h-14 bg-gradient-to-r from-blue-400 via-blue-900 to-black">

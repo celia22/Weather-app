@@ -40,7 +40,7 @@ class App extends Component {
   render() {
     const { city, forecast, favouritesArr } = this.state;
     return (
-      <div style={{ backgroundColor: "rgb(222, 233, 245)" }}>
+      <div className="h-screen bg-blue-50">
         <Router>
           <Switch>
             <Route path="/favourites">

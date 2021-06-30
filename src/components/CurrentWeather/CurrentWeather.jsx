@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import Favourites from "../Favourites/Favourites"
 
 import LogoSwitch from "../LogoSwitch/LogoSwitch"
 import BG_clouds from "./BG_clouds.png"
