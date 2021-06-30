@@ -1,6 +1,6 @@
 const LogoSwitch = (props) => {
 
-  const weather = props.weather  
+ const weather = props.weather  
 
  let src = " "
 

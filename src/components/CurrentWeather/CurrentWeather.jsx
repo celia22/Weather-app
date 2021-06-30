@@ -28,7 +28,8 @@ kelvinToCelsius = (kelvin) => {
 componentDidUpdate(prevProps, heartIsClicked){
   if (prevProps.city !== this.props.city){ 
     this.setState({
-      city: this.props.city
+      city: this.props.city,
+      heartIsClicked: false,
     })
   }
 }

@@ -47,6 +47,15 @@ class SearchBar extends Component {
     this.setState({ query: x.target.value });  
   }
 
+  componentDidUpdate(prevProps, main){
+    if (prevProps.city !== this.props.city){ 
+      this.setState({
+        city: this.props.city,
+        main: true,
+      })
+    }
+  }
+
   render(){
     
     return(
