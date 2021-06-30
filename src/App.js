@@ -14,6 +14,7 @@ class App extends Component {
       city: "",
       forecast: "",
       main: true,
+      favouritesArr: "",
     };
   }
 
@@ -29,14 +30,21 @@ class App extends Component {
     });
   };
 
+  handleFavs = (favouritesArr) => {
+    this.setState({
+      favouritesArr: favouritesArr,
+    });
+    console.log("APPJS", favouritesArr);
+  };
+
   render() {
-    const { city, forecast } = this.state;
+    const { city, forecast, favouritesArr } = this.state;
     return (
       <div style={{ backgroundColor: "rgb(222, 233, 245)" }}>
         <Router>
           <Switch>
             <Route path="/favourites">
-              <Favourites />
+              <Favourites add={favouritesArr} />
             </Route>
 
             <Route path="/search">
@@ -44,7 +52,11 @@ class App extends Component {
                 city={this.handleCity}
                 forecast={this.handleForecast}
               />
-              {city ? <CurrentWeather city={city} /> : ""}
+              {city ? (
+                <CurrentWeather city={city} favouritesArr={this.handleFavs} />
+              ) : (
+                ""
+              )}
               {forecast ? <Forecast forecast={forecast} /> : ""}
             </Route>
 

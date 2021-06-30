@@ -8,14 +8,14 @@ import BG_snow from "./BG_snow.png"
 import BG_sunny from "./BG_sunny.png"
 import BG_storm from "./BG_storm.png"
 
+
 class CurrentWeather extends Component {
   constructor(props){
     super(props)
     this.state = {
       city: props.city,
-      favArray: [],
+      favouritesArr: [],
       heartIsClicked: false
-
     }
   }
 
@@ -41,22 +41,23 @@ handleLike = () => {
   console.log(this.state.heartIsClicked)
 }
 
- addFav = (e) => {
-   const { favArray, city } = this.state
-  favArray.push(city);
-  < Favourites add={favArray}/>
+ addFav = () => {
+   const { favouritesArr, city } = this.state   
+   favouritesArr.push(city)
+   this.props.favouritesArr(favouritesArr)
  }
 
 
-
 render(){
- console.log("favarr!", this.state.favArray)
- const { city, favArray} = this.state
+ console.log("favarr!", this.state.favouritesArr)
+ const { city } = this.state;
 
 
 
   return(
-   <>
+    
+   <>   
+  
    <div>         
         <div className="relative mt-6 mx-auto w-1/3 h-72 p-6 rounded-md shadow-lg border-2 border-gray-600" style={{ backgroundImage: city.weather[0].main === "Clouds" ? `url(${BG_clouds})` : city.weather[0].main === "Drizzle" ? `url(${BG_rain})` : city.weather[0].main === "Rain" ? `url(${BG_rain})`: city.weather[0].main === "Snow" ? `url(${BG_snow})` : city.weather[0].main === "Clear" ? `url(${BG_sunny})` : `url(${BG_storm})` }}>
        
@@ -96,8 +97,9 @@ render(){
         </div>
         )} 
                              
-      </div>
+        </div>
       </div> 
+         
    </>   
     )
 
