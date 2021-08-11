@@ -1,6 +1,6 @@
 import React  from "react"
 import LogoSwitch from "../LogoSwitch/LogoSwitch"
-import getWeekDay from "./WeekDay"
+import getWeekDay from "../../helpers/getWeekDay"
 
 const Forecast = (props) => {
 
