@@ -13,8 +13,6 @@ class CurrentWeather extends Component {
   constructor(props){
     super(props)
     this.state = {
-      // city: props.city,
-     // status: false,
       heartIsClicked: false
     }
   }
@@ -25,16 +23,6 @@ kelvinToCelsius = (kelvin) => {
   return celsius.toFixed(0)
 }
 
-// componentDidUpdate(prevProps){
-//   if (prevProps.city !== this.props.city){ 
-//     this.setState({
-//       city: this.props.city,
-//       heartIsClicked: false,
-//      // status: true
-//     })
-//   }
-//   console.log(this.state.city)
-// }
 
 handleLike = () => {
   this.setState({
@@ -53,13 +41,9 @@ handleLike = () => {
 render(){
 
 const { city } = this.props;
-console.log("city in current", city)
 
-  return(
-        
+  return(        
    <>    
- 
-
         <div className="relative mt-6 mx-auto w-1/3 h-72 p-6 rounded-md shadow-lg border-2 border-gray-600" >
         <div>
           <h5 className="text-3xl">{city.data.name}, {city.data.sys.country}</h5>
