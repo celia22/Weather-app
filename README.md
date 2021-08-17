@@ -41,18 +41,5 @@ La idea es realizar una app del tiempo donde puedas consultar el tiempo en disti
 - Usar como API [OpenWeatherMap](https://openweathermap.org/api)
   ​
 
-## A tener en cuenta...
 
-​
 
-- Es necesario obtener un token para realizar las peticiones y puede tardar unos dias, recomendable hacerlo cuánto antes
-  ​
-- Ojo con el número de peticiones, sólo permite 1.000.000/mes.
-  Aquí tenéis los [precios](https://openweathermap.org/price)
-  ​
-- El token lo teneis que guardar en el `.env`
-  ​
-- Para los iconos del tiempo os recomendamos
-  [este recurso](https://thenounproject.com/nookfulloption/collection/weather/)
-  ​
-- Para entregarla deberéis subir el proyecto a un repositorio de Github
