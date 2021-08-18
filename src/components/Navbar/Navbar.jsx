@@ -1,14 +1,15 @@
 import React, {Component} from "react";
 import { Link } from "react-router-dom";
+import "./Navbar.css";
 
 
 class Navbar extends Component {
   render(){
     return(
       
-      <div className="flex h-14 bg-gradient-to-r from-blue-400 via-blue-900 to-black">
-          <h1 className="text-white text-2xl p-3 "> Your Weather App</h1>
-          <Link to="/favourites" ><h3 className="text-white text-xl p-3"> Favourites </h3>  </Link>     
+      <div className="navbar_container">
+          <h1> Your Weather App</h1>
+          <Link to="/favourites" ><h3 > Favourites </h3>  </Link>     
       </div> 
     )
   }

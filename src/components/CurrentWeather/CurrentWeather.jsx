@@ -2,11 +2,12 @@ import React, { Component } from "react"
 
 import LogoSwitch from "../LogoSwitch/LogoSwitch"
 
-// import BG_clouds from "./BG_clouds.png"
-// import BG_rain from "./BG_rain.png"
-// import BG_snow from "./BG_snow.png"
-// import BG_sunny from "./BG_sunny.png"
-// import BG_storm from "./BG_storm.png"
+// import clear from "./pics/clear.jpg"
+// import clouds from "./pics/clouds.jpg"
+// import rain from "./pics/rain.jpg"
+// import storm from "./pics/storm.jpg"
+// import fog from "./pics/fog.jpg"
+// import snow from "./pics/snow.jpg"
 
 
 class CurrentWeather extends Component {
@@ -44,13 +45,14 @@ const { city } = this.props;
 
   return(        
    <>    
-        <div className="relative mt-6 mx-auto w-1/3 h-72 p-6 rounded-md shadow-lg border-2 border-gray-600" >
-        <div>
+   {/* <div style={{ backgroundImage: city.data.weather[0].main === "Clouds" ? `url(${clouds})` : city.data.weather[0].main === "Drizzle" ? `url(${rain})` : city.data.weather[0].main === "Rain" ? `url(${rain})`: city.data.weather[0].main === "Snow" ? `url(${snow})` : city.data.weather[0].main === "Clear" ? `url(${clear})` : `url(${storm})` }}> */}
+       <div>
+         <div>
           <h5 className="text-3xl">{city.data.name}, {city.data.sys.country}</h5>
         </div>           
         
         <div className="p-4">  
-       < LogoSwitch  weather= {city.data.weather[0].main } />            
+       < LogoSwitch weather= {city.data.weather[0].main } />            
           <h5 className="text-xs">{city.data.weather[0].description}</h5>
         </div>
   

@@ -3,7 +3,14 @@ import SearchBar from "../components/SearchBar/SearchBar";
 import React, {Component} from "react";
 import apiService from "../services/apiClient";
 import CurrentWeather from "../components/CurrentWeather/CurrentWeather";
-import Forecast from "../components/Forecast/Forecast"
+import Forecast from "../components/Forecast/Forecast";
+import clear from "./pics/clear.jpg"
+import clouds from "./pics/clouds.jpg"
+import rain from "./pics/rain.jpg"
+import storm from "./pics/storm.jpg"
+import fog from "./pics/fog.jpg"
+import snow from "./pics/snow.jpg"
+
 
 require('dotenv').config();
 class Home extends Component {
@@ -24,7 +31,7 @@ class Home extends Component {
     this.weatherRequest(initialCity) 
     this.setState({
       location:initialCity,
-    })
+    })    
 }
 
 
@@ -55,18 +62,25 @@ class Home extends Component {
   render(){
     console.log(this.state.location)
     const { initialCity, location, status, forecast } = this.state;
+    console.log("location", location)
+    // console.log("weather location", location.data.weather[0].main)
     return(
-      <div className="w-screen h-screen" > 
+      
+   
+      <div>
+      {/* <div className="home_page_container" style={{ backgroundImage: location.data.weather[0].main === "Clouds" ? `url(${clouds})` : location.data.weather[0].main === "Drizzle" ? `url(${rain})` : location.data.weather[0].main === "Rain" ? `url(${rain})`: location.data.weather[0].main === "Snow" ? `url(${snow})` : location.data.weather[0].main === "Clear" ? `url(${clear})` : `url(${storm})` }}> */}
+      <div className="navbar_container" > 
       < Navbar /> 
       < SearchBar newLocation={this.newSearch} initialValue={initialCity}/>  
-
-      { status === 'loading' && <p className="text-lg mb-4 font-normal mt-8"><span className="rotate">⏳</span>Loading data...</p>}
+      </div>
+      <div>
+      { status === 'loading' && <p ><span className="rotate">⏳</span>Loading data...</p>}
       { status === "loaded" && <CurrentWeather city={location} /> }
       { status === "loaded" && <Forecast forecast={forecast}/>}
-          
-      </div>
+      </div>   
+     </div>
 
-      
+
     )
   }
 
