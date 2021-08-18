@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 
-import LogoSwitch from "../components/LogoSwitch/LogoSwitch"
-// import Forecast from "../components/Forecast/Forecast";
+import LogoSwitch from "../LogoSwitch/LogoSwitch"
+
 // import BG_clouds from "./BG_clouds.png"
 // import BG_rain from "./BG_rain.png"
 // import BG_snow from "./BG_snow.png"

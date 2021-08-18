@@ -71,9 +71,7 @@ console.log("forecast",fiveDayForecast)
          <h5 >Min {toCelsius(minTempForecast[index])}º</h5>
          <h5 >Max {toCelsius(maxTempForecast[index])}º</h5>
          </div>
-         </div>  
-
-     
+         </div>       
          </>
         )
         

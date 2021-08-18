@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar/Navbar";
 import SearchBar from "../components/SearchBar/SearchBar";
 import React, {Component} from "react";
 import apiService from "../services/apiClient";
-import CurrentWeather from "./CurrentWeather";
+import CurrentWeather from "../components/CurrentWeather/CurrentWeather";
 import Forecast from "../components/Forecast/Forecast"
 
 require('dotenv').config();
