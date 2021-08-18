@@ -15,8 +15,10 @@ const toCelsius = (k) => {
   let temp = [];
 
   console.log(forecast.data.list.length)
+
   for ( let i = 0; i < forecast.data.list.length; i++){    
-    if(i % 8 === 0 && i !== 0) {
+    if(i % 7 === 0 && i !== 0) {
+      temp.push(forecast.data.list[i])
       fiveDayForecast.push(temp)
       temp = []
     } 
@@ -24,6 +26,30 @@ const toCelsius = (k) => {
   }
 
   console.log("forecast", fiveDayForecast)
+
+
+  let minTempForecast = [];
+  let maxTempForecast = [];
+
+  for (let i = 0; i < fiveDayForecast.length; i++){
+    let tempMin = 700;
+    let tempMax = 0;
+    for (let j = 0; j < fiveDayForecast[i].length; j++){
+       if(fiveDayForecast[i][j].main.temp_min < tempMin){
+        tempMin = fiveDayForecast[i][j].main.temp_min
+        minTempForecast.push(tempMin)
+      }
+      if(fiveDayForecast[i][j].main.temp_max > tempMax){
+        tempMax = fiveDayForecast[i][j].main.temp_max
+        maxTempForecast.push(tempMax)
+      }
+      tempMin = 0;
+      tempMax = 700;
+    }
+    
+  }
+console.log(minTempForecast)
+console.log(maxTempForecast)
 
 
    return(
