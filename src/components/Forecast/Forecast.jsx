@@ -1,6 +1,7 @@
 import React  from "react"
 import LogoSwitch from "../LogoSwitch/LogoSwitch"
 import getWeekDay from "../../helpers/getWeekDay"
+import "./Forecast.css"
 
 const Forecast = (props) => {
 
@@ -49,15 +50,15 @@ console.log("forecast",fiveDayForecast)
 
    return(
      <>
-    <div className="flex flex-wrap ml-36 mt-16">  
+    <div className="forecast_card_container">  
      
      {fiveDayForecast.map((item, index) => {      
         return(
           <>
-          <div key={index}>
+          <div className="forecast_card" key={index}>
         {item.slice(3,4).map((item,index) => {
           return(
-           <div className="mr-12 w-48 h-40 pt-4 border-t-2 border-l-2 border-r-2 border-gray-600 px-3 rounded-tl-lg rounded-tr-lg bg-white" key={index} >
+           <div  key={index} >
            <div> 
              <h3>{getWeekDay(item.dt_txt)}</h3>       
              < LogoSwitch weather= {item.weather[0].main } />          
@@ -66,7 +67,7 @@ console.log("forecast",fiveDayForecast)
          </div> 
           )
         })}  
-              <div className="flex"> 
+          <div className="flex"> 
          <img className="w-8 items-center" src="../image/heat.png" alt="termometro logo"></img>
          <h5 >Min {toCelsius(minTempForecast[index])}º</h5>
          <h5 >Max {toCelsius(maxTempForecast[index])}º</h5>
