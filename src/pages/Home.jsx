@@ -42,8 +42,6 @@ class Home extends Component {
     try {
      const city =  await apiService.cityRequest(location)
      const forecast = await apiService.weatherRequest(location)   
-      console.log("searcB CITY", city)
-      console.log("searcB FORECAST", forecast)
       this.setState({
         location: city,
         forecast: forecast,
@@ -62,7 +60,7 @@ class Home extends Component {
   render(){
     console.log(this.state.location)
     const { initialCity, location, status, forecast } = this.state;
-    console.log("location", location)
+   
     // console.log("weather location", location.data.weather[0].main)
     return(
       
@@ -74,12 +72,19 @@ class Home extends Component {
       < SearchBar newLocation={this.newSearch} initialValue={initialCity}/>  
       </div>
       <div>
-      { status === 'loading' && <p ><span className="rotate">⏳</span>Loading data...</p>}
+
+      { status === "loaded" ? (
+        <div className="home_page_container" style={{ backgroundImage: location.data.weather[0].main === "Clouds" ? `url(${clouds})` : location.data.weather[0].main === "Drizzle" ? `url(${rain})` : location.data.weather[0].main === "Rain" ? `url(${rain})`: location.data.weather[0].main === "Snow" ? `url(${snow})` : location.data.weather[0].main === "Clear" ? `url(${clear})` : `url(${storm})` }}> 
+            { status === 'loading' && <p ><span className="rotate">⏳</span>Loading data...</p>}
       { status === "loaded" && <CurrentWeather city={location} /> }
+      { status === "loaded" && console.log("weather", location.data.weather[0].main)}
       { status === "loaded" && <Forecast forecast={forecast}/>}
+        </div>
+      ): (
+          " "
+      )}      
       </div>   
      </div>
-
 
     )
   }

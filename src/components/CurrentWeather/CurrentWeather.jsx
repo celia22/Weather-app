@@ -2,12 +2,12 @@ import React, { Component } from "react"
 
 import LogoSwitch from "../LogoSwitch/LogoSwitch"
 
-// import clear from "./pics/clear.jpg"
-// import clouds from "./pics/clouds.jpg"
-// import rain from "./pics/rain.jpg"
-// import storm from "./pics/storm.jpg"
-// import fog from "./pics/fog.jpg"
-// import snow from "./pics/snow.jpg"
+// import clear from "..CurrentWeather/"
+// import clouds from "/pics/clouds.jpg"
+// import rain from "/pics/rain.jpg"
+// import storm from "/pics/storm.jpg"
+// import fog from "/pics/fog.jpg"
+// import snow from "/pics/snow.jpg"
 
 
 class CurrentWeather extends Component {
@@ -46,7 +46,7 @@ const { city } = this.props;
   return(        
    <>    
    {/* <div style={{ backgroundImage: city.data.weather[0].main === "Clouds" ? `url(${clouds})` : city.data.weather[0].main === "Drizzle" ? `url(${rain})` : city.data.weather[0].main === "Rain" ? `url(${rain})`: city.data.weather[0].main === "Snow" ? `url(${snow})` : city.data.weather[0].main === "Clear" ? `url(${clear})` : `url(${storm})` }}> */}
-       <div>
+      <div>
          <div>
           <h5 className="text-3xl">{city.data.name}, {city.data.sys.country}</h5>
         </div>           
