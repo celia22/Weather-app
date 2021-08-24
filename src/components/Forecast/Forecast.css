@@ -1,0 +1,8 @@
+.forecast_card_container {
+  margin: 4vh auto;
+}
+
+.forecast_card {
+  margin-right: 3vh;
+  display: flex;
+}

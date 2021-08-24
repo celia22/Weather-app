@@ -1,6 +1,7 @@
 import React  from "react"
 import LogoSwitch from "../LogoSwitch/LogoSwitch"
-import getWeekDay from "./WeekDay"
+import getWeekDay from "../../helpers/getWeekDay"
+import "./Forecast.css"
 
 const Forecast = (props) => {
 
@@ -11,67 +12,76 @@ const toCelsius = (k) => {
   return celsius.toFixed(0)
 }
 
-  const forecastMorning = []
+const fiveDayForecast = []
+  let temp = [];
 
-  for ( let i = 0; i < forecast.list.length; i += 8){
-    forecastMorning.push(forecast.list[i])
+  for ( let i = 0; i < forecast.data.list.length; i++){    
+    if(i % 7 === 0 && i !== 0) {
+      temp.push(forecast.data.list[i])
+      fiveDayForecast.push(temp)
+      temp = []
+    } 
+    temp.push(forecast.data.list[i])
   }
 
-  const forecastAfternoon= []
+  let minTempForecast = [];
+  let maxTempForecast = [];
 
-  for ( let i = 2; i < forecast.list.length; i += 8){
-    forecastAfternoon.push(forecast.list[i])
+  for (let i = 0; i < fiveDayForecast.length; i++){
+    let tempMin = 700;
+    let tempMax = 0;
+    for (let j = 0; j < fiveDayForecast[i].length; j++){
+       if(fiveDayForecast[i][j].main.temp_min < tempMin){
+        tempMin = fiveDayForecast[i][j].main.temp_min       
+      }
+      if(fiveDayForecast[i][j].main.temp_max > tempMax){
+        tempMax = fiveDayForecast[i][j].main.temp_max       
+      } 
+    }   
+    minTempForecast.push(tempMin)
+    maxTempForecast.push(tempMax)
+    tempMin = 700
+    tempMax = 0; 
   }
+
+console.log("forecast",fiveDayForecast)
+
+
 
    return(
      <>
-    <div className="flex flex-wrap ml-36 mt-16">  
+    <div className="forecast_card_container">  
      
-     {forecastMorning.map((item,index) => {      
+     {fiveDayForecast.map((item, index) => {      
         return(
-        <>  
-          <div className="mr-12 w-48 h-40 pt-4 border-t-2 border-l-2 border-r-2 border-gray-600 px-3 rounded-tl-lg rounded-tr-lg bg-white" key={index} >
-            <div> 
-              <h3>{getWeekDay(item.dt_txt)}</h3>       
-            <h4><strong>Morning </strong></h4>
-            < LogoSwitch weather= {item.weather[0].main } />          
-              <h5>{item.weather[0].description}</h5>
-            </div>
-          
-            <div className="flex"> 
-              <img className="w-8 items-center" src="../image/heat.png" alt="termometro logo"></img>  <h5>Temp {toCelsius(item.main.temp_max)}º</h5>
-            </div>
-  
-          </div> 
-         </>       
-        )
-      })}
-      <div className="flex ">
-    {forecastAfternoon.map((item,index) => {      
-        return(
-        <>  
-          <div className=" mr-12 w-48 h-36 border-b-2 border-l-2 border-r-2 border-gray-600 px-3 shadow-lg rounded-bl-lg rounded-br-lg bg-white" key={index} >
-            <div>        
-            <h4><strong>Afternoon </strong></h4>
-            < LogoSwitch weather= {item.weather[0].main } />         
-              <h5>{item.weather[0].main}</h5>
-            </div>
-          
-            <div className="flex"> 
-              <img className="w-8 items-center" src="../image/heat.png" alt="termometer logo"></img>  <h5>Temp {toCelsius(item.main.temp_max)}º</h5>
-            </div>
-  
-          </div> 
-         </>       
-        )
-      })}  
-     </div> 
+      
+          <div className="forecast_card" key={index}>
+        {item.slice(3,4).map((item,index) => {
+          return(
+           <div  key={index} >
+           <div> 
+             <h3>{getWeekDay(item.dt_txt)}</h3>       
+             < LogoSwitch weather= {item.weather[0].main } />          
+             <h5>{item.weather[0].description}</h5>
+           </div>
+         </div> 
+          )
+        })}  
+          <div className="flex"> 
+         <img className="w-8 items-center" src="../image/heat.png" alt="termometro logo"></img>
+         <h5 >Min {toCelsius(minTempForecast[index])}º</h5>
+         <h5 >Max {toCelsius(maxTempForecast[index])}º</h5>
+         </div>
+         </div>       
         
+        )
+        
+      })}
+              
     </div>
     </>     
    )
 }
 
 export default Forecast
-
 
