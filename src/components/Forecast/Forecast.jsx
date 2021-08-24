@@ -54,7 +54,7 @@ console.log("forecast",fiveDayForecast)
      
      {fiveDayForecast.map((item, index) => {      
         return(
-          <>
+      
           <div className="forecast_card" key={index}>
         {item.slice(3,4).map((item,index) => {
           return(
@@ -73,7 +73,7 @@ console.log("forecast",fiveDayForecast)
          <h5 >Max {toCelsius(maxTempForecast[index])}º</h5>
          </div>
          </div>       
-         </>
+        
         )
         
       })}

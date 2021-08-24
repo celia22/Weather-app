@@ -4,6 +4,7 @@ import React, {Component} from "react";
 import apiService from "../services/apiClient";
 import CurrentWeather from "../components/CurrentWeather/CurrentWeather";
 import Forecast from "../components/Forecast/Forecast";
+import "./styles/home.css"
 import clear from "./pics/clear.jpg"
 import clouds from "./pics/clouds.jpg"
 import rain from "./pics/rain.jpg"
@@ -65,8 +66,8 @@ class Home extends Component {
     return(
       
    
-      <div>
-      {/* <div className="home_page_container" style={{ backgroundImage: location.data.weather[0].main === "Clouds" ? `url(${clouds})` : location.data.weather[0].main === "Drizzle" ? `url(${rain})` : location.data.weather[0].main === "Rain" ? `url(${rain})`: location.data.weather[0].main === "Snow" ? `url(${snow})` : location.data.weather[0].main === "Clear" ? `url(${clear})` : `url(${storm})` }}> */}
+      <div className="home_page_container">
+     
       <div className="navbar_container" > 
       < Navbar /> 
       < SearchBar newLocation={this.newSearch} initialValue={initialCity}/>  
@@ -74,10 +75,13 @@ class Home extends Component {
       <div>
 
       { status === "loaded" ? (
-        <div className="home_page_container" style={{ backgroundImage: location.data.weather[0].main === "Clouds" ? `url(${clouds})` : location.data.weather[0].main === "Drizzle" ? `url(${rain})` : location.data.weather[0].main === "Rain" ? `url(${rain})`: location.data.weather[0].main === "Snow" ? `url(${snow})` : location.data.weather[0].main === "Clear" ? `url(${clear})` : `url(${storm})` }}> 
+        <div className="home_weather_container" style={{ backgroundImage: location.data.weather[0].main === "Clouds" ? `url(${clouds})` : 
+        location.data.weather[0].main === "Drizzle" ? `url(${rain})` : location.data.weather[0].main === "Rain" ? `url(${rain})`: 
+        location.data.weather[0].main === "Snow" ? `url(${snow})` : location.data.weather[0].main === "Clear" ? `url(${clear})` : 
+        `url(${storm})`,
+         backgroundRepeat: "no-repeat", backgroundSize: "cover" }}> 
             { status === 'loading' && <p ><span className="rotate">⏳</span>Loading data...</p>}
       { status === "loaded" && <CurrentWeather city={location} /> }
-      { status === "loaded" && console.log("weather", location.data.weather[0].main)}
       { status === "loaded" && <Forecast forecast={forecast}/>}
         </div>
       ): (
