@@ -1,26 +1,18 @@
 import React, {Component} from "react";
-
-
-import LogoSwitch from "../components/LogoSwitch/LogoSwitch"
-// import BG_clouds from "../CurrentWeather/BG_clouds.png"
-// import BG_rain from "../CurrentWeather/BG_rain.png"
-// import BG_snow from "../CurrentWeather/BG_snow.png"
-// import BG_sunny from "../CurrentWeather/BG_sunny.png"
-// import BG_storm from "../CurrentWeather/BG_storm.png"
-// import SearchBar from "../components/SearchBar/SearchBar";
+import IconSwitch from "../components/IconSwitch/IconSwitch"
 
 
 class Favourites extends Component{
   constructor(props){
     super(props)
     this.state = {
-      favouritesArr: this.props.add,
+      favouritesArr: this.props.addFav,
       heartIsClicked: true,
     }
   }
 
   toCelsius = (k) => {
-    let celsius = k - 273
+    const celsius = k - 273
     return celsius.toFixed(0)
   }
 
@@ -32,11 +24,11 @@ handleLike = (index) => { // esta repetida, habria que pasarla a services aqui y
   console.log(this.state.heartIsClicked)
 }
 
-//  addFav = () => {
-//    const { favouritesArr, city } = this.state   
-//    favouritesArr.push(city)
-//    this.props.favouritesArr(favouritesArr)
-//  }
+ addFav = () => {
+   const { favouritesArr, city } = this.state   
+   favouritesArr.push(city)
+   this.props.favouritesArr(favouritesArr)
+ }
 
 removeFav = () => {
 
@@ -62,7 +54,7 @@ removeFav = () => {
       // <div key={index} className=" relative mt-6 mx-16 w-1/4 h-72 p-6 rounded-md shadow-lg border-2 border-gray-600" style={{ backgroundImage: item.weather[0].main === "Clouds" ? `url(${BG_clouds})` : item.weather[0].main === "Drizzle" ? `url(${BG_rain})` : item.weather[0].main === "Rain" ? `url(${BG_rain})`: item.weather[0].main === "Snow" ? `url(${BG_snow})` : item.weather[0].main === "Clear" ? `url(${BG_sunny})` : `url(${BG_storm})` }} >
       <div key={index} className=" relative mt-6 mx-16 w-1/4 h-72 p-6 rounded-md shadow-lg border-2 border-gray-600" >
       <h5 className="text-3xl">{item.name}, {item.sys.country}</h5>
-         < LogoSwitch weather= {item.weather[0].main } />   
+         < IconSwitch weather= {item.weather[0].main } />   
           <p>{item.weather[0].description}</p>
       <div className="flex flex-col"> 
         <div className="flex"><img className="w-8 items-center " src="../image/heat.png" alt="termometro logo"></img>  <h5 className="text-3xl">{this.toCelsius(item.main.temp)}º  </h5>

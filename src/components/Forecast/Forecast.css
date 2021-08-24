@@ -1,8 +1,22 @@
 .forecast_card_container {
-  margin: 4vh auto;
+	margin: 7vh 10%;
+	width: 80%;
+	background-color: rgba(75, 77, 78, 0.178);
+	border-radius: 5%;
+	padding: 2vh;
 }
 
 .forecast_card {
-  margin-right: 3vh;
-  display: flex;
+	display: flex;
+	color: white;
+	margin: 3vh;
+}
+
+.forecast_card_icons {
+	display: flex;
+	color: white;
+}
+
+.forecast_card_title {
+	display: flex;
 }

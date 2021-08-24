@@ -1,4 +1,6 @@
-const LogoSwitch = (props) => {
+import React from "react";
+
+const IconSwitch = (props) => {
 
  const weather = props.weather  
 
@@ -34,4 +36,4 @@ const LogoSwitch = (props) => {
     
 }
 
-export default LogoSwitch;
+export default IconSwitch;
