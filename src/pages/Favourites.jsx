@@ -53,18 +53,18 @@ removeFav = () => {
       <div className='current_weather_container' key={index}>
       <div className='current_weather_header'>
         <div className='current_weather_header_city'>
-          <h5>{item.city.data.name} </h5>
+          <h5>{item.data.name} </h5>
         </div>
 
         <div className='current_weather_header_temp'>
-          <h3 className='text-3xl'>{kelvinToCelsius(item.city.data.main.temp)}º </h3> &nbsp; &nbsp;
+          <h3 className='text-3xl'>{kelvinToCelsius(item.data.main.temp)}º </h3> &nbsp; &nbsp;
           <span>
-            <h6> Feels like {kelvinToCelsius(item.city.data.main.feels_like)}º</h6>
+            <h6> Feels like {kelvinToCelsius(item.data.main.feels_like)}º</h6>
           </span>
         </div>
         <div className='current_weather_icon_switch'>
-          <IconSwitch weather={item.city.data.weather[0].main} /> &nbsp; &nbsp;
-          <h6>{item.city.data.weather[0].main}</h6>
+          <IconSwitch weather={item.data.weather[0].main} /> &nbsp; &nbsp;
+          <h6>{item.data.weather[0].main}</h6>
         </div>
       </div>
 

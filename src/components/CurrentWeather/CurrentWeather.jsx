@@ -9,6 +9,7 @@ class CurrentWeather extends Component {
 		this.state = {
 			heartIsClicked: false,
 			favouritesArr: [],
+      city: this.props.city,
 		};
 	}
 
@@ -18,16 +19,25 @@ class CurrentWeather extends Component {
 		});
 	};
 
+  componentDidUpdate(prevProps, heartIsClicked){
+    if (prevProps.city !== this.props.city){ 
+      this.setState({
+        city: this.props.city,
+        heartIsClicked: false,
+      })
+    }
+  }
+
+
 	addFav = () => {
-		const { favouritesArr } = this.state;
-		const city = this.props;
+		const { favouritesArr, city } = this.state;
 		favouritesArr.push(city);
 		console.log("fav", favouritesArr)
 		this.props.add(favouritesArr);
 	};
 
 	render() {
-		const { city } = this.props;
+		const { city } = this.state;
 
 		return (
 			<>
