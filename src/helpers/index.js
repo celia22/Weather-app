@@ -9,4 +9,10 @@ const getWeekDay = date => {
 	return date2.toLocaleDateString('es-ES', options);
 };
 
-export default getWeekDay;
+const kelvinToCelsius = kelvin => {
+	const celsius = kelvin - 273;
+	return celsius.toFixed(0);
+};
+
+export { getWeekDay };
+export { kelvinToCelsius };

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {kelvinToCelsius} from '../../helpers/index';
 import IconSwitch from '../IconSwitch/IconSwitch';
 import './CurrentWeather.css';
 
@@ -10,11 +11,6 @@ class CurrentWeather extends Component {
 			favouritesArr: [],
 		};
 	}
-
-	kelvinToCelsius = kelvin => {
-		const celsius = kelvin - 273;
-		return celsius.toFixed(0);
-	};
 
 	handleLike = () => {
 		this.setState({
@@ -42,9 +38,9 @@ class CurrentWeather extends Component {
 						</div>
 
 						<div className='current_weather_header_temp'>
-							<h3 className='text-3xl'>{this.kelvinToCelsius(city.data.main.temp)}º </h3> &nbsp; &nbsp;
+							<h3 className='text-3xl'>{kelvinToCelsius(city.data.main.temp)}º </h3> &nbsp; &nbsp;
 							<span>
-								<h6> Feels like {this.kelvinToCelsius(city.data.main.feels_like)}º</h6>
+								<h6> Feels like {kelvinToCelsius(city.data.main.feels_like)}º</h6>
 							</span>
 						</div>
 						<div className='current_weather_icon_switch'>

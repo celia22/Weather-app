@@ -1,6 +1,6 @@
 import React from 'react';
 import IconSwitch from '../IconSwitch/IconSwitch';
-import getWeekDay from '../../helpers/getWeekDay';
+import {getWeekDay} from '../../helpers/index';
 import './Forecast.css';
 
 const Forecast = props => {

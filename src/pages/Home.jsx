@@ -1,7 +1,7 @@
 import Navbar from '../components/Navbar/Navbar';
 import SearchBar from '../components/SearchBar/SearchBar';
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import apiService from '../services/apiClient';
 import CurrentWeather from '../components/CurrentWeather/CurrentWeather';
 import Forecast from '../components/Forecast/Forecast';
@@ -10,7 +10,7 @@ import clear from './pics/clear.jpg';
 import clouds from './pics/clouds.jpg';
 import rain from './pics/rain.jpg';
 import storm from './pics/storm.jpg';
-import fog from "./pics/fog.jpg"
+import fog from './pics/fog.jpg';
 import snow from './pics/snow.jpg';
 
 require('dotenv').config();
@@ -55,22 +55,23 @@ class Home extends Component {
 		this.weatherRequest(location);
 	};
 
-	handleFavs = (favouritesArr) => {
-    this.setState({
-      favouritesArr: favouritesArr,
-    });
-    console.log("APPJS", favouritesArr);
-  };
+	handleFavs = favouritesArr => {
+		this.setState({
+			favouritesArr: favouritesArr,
+		});
+		this.props.add(favouritesArr);
+		console.log('APPJS', favouritesArr);
+	};
 
 	render() {
 		console.log(this.state.location);
-		const { initialCity, location, status, forecast, favouritesArr } = this.state;
+		const { initialCity, location, status, forecast } = this.state;
 
 		return (
 			<div className="home_page_container">
 				<div className="navbar_container">
 					<Navbar />
-					<Link to="/favourites" favs={favouritesArr}><h3 > Favourites </h3>  </Link>   					
+					<Link to="/favourites"><h3 > Favourites </h3>  </Link>   	 
 					<SearchBar newLocation={this.newSearch} initialValue={initialCity} />
 				</div>
 				<div>
@@ -101,7 +102,7 @@ class Home extends Component {
 									<span>⏳</span>Loading weather...
 								</p>
 							)}
-							{status === 'loaded' && <CurrentWeather city={location} add={this.handleFavs}/>}
+							{status === 'loaded' && <CurrentWeather city={location} add={this.handleFavs} />}
 							{status === 'loaded' && <Forecast forecast={forecast} />}
 						</div>
 					) : (

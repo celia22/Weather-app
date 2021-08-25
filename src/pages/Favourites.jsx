@@ -1,19 +1,17 @@
 import React, {Component} from "react";
+import { Link } from "react-router-dom";
 import IconSwitch from "../components/IconSwitch/IconSwitch"
+import {kelvinToCelsius} from '../helpers/index';
+import "./styles/Favourites.css"
 
 
 class Favourites extends Component{
   constructor(props){
     super(props)
     this.state = {
-      favouritesArr: this.props.favs,
+      favouritesArr: this.props.favArr,
       heartIsClicked: true,
     }
-  }
-
-  toCelsius = (k) => {
-    const celsius = k - 273
-    return celsius.toFixed(0)
   }
 
 
@@ -37,38 +35,38 @@ removeFav = () => {
 
   render(){
 
-    console.log("favArr", this.state.favouritesArr)
+    console.log("favArr", this.state)
     const { favouritesArr } = this.state;
     return(    
      <>
-    {/* <SearchBar /> */}
-
+ 
     {favouritesArr ? (
       <>
         <h1>Your favourites cities</h1>
 
-<div className="flex flex-wrap">
+<div className="favPage">
 
    {favouritesArr.map((item, index) => {
      return(
-      // <div key={index} className=" relative mt-6 mx-16 w-1/4 h-72 p-6 rounded-md shadow-lg border-2 border-gray-600" style={{ backgroundImage: item.weather[0].main === "Clouds" ? `url(${BG_clouds})` : item.weather[0].main === "Drizzle" ? `url(${BG_rain})` : item.weather[0].main === "Rain" ? `url(${BG_rain})`: item.weather[0].main === "Snow" ? `url(${BG_snow})` : item.weather[0].main === "Clear" ? `url(${BG_sunny})` : `url(${BG_storm})` }} >
-      <div key={index} className=" relative mt-6 mx-16 w-1/4 h-72 p-6 rounded-md shadow-lg border-2 border-gray-600" >
-      <h5 className="text-3xl">{item.name}, {item.sys.country}</h5>
-         < IconSwitch weather= {item.weather[0].main } />   
-          <p>{item.weather[0].description}</p>
-      <div className="flex flex-col"> 
-        <div className="flex"><img className="w-8 items-center " src="../image/heat.png" alt="termometro logo"></img>  <h5 className="text-3xl">{this.toCelsius(item.main.temp)}º  </h5>
-        <h5 className="text-lg ml-2"> Feels like {this.toCelsius(item.main.feels_like)}º</h5>
-        </div> 
-    </div>    
-    
-    <div className="flex mt-3">
-      <img className="w-8 items-center " src="../image/wind.png" alt="termometro logo"></img> <h5><strong>Wind Speed: {item.wind.speed}</strong></h5> 
-    </div>
+       <>
+       <button><Link to="/">Back</Link></button>
+      <div className='current_weather_container' key={index}>
+      <div className='current_weather_header'>
+        <div className='current_weather_header_city'>
+          <h5>{item.city.data.name} </h5>
+        </div>
 
-    <div className="flex items-center mt-3">
-      <img className="w-8 items-center " src="../image/humidity.png" alt="termometro logo"></img><h5><strong>Humidity: {item.main.humidity}</strong></h5>
-    </div> 
+        <div className='current_weather_header_temp'>
+          <h3 className='text-3xl'>{kelvinToCelsius(item.city.data.main.temp)}º </h3> &nbsp; &nbsp;
+          <span>
+            <h6> Feels like {kelvinToCelsius(item.city.data.main.feels_like)}º</h6>
+          </span>
+        </div>
+        <div className='current_weather_icon_switch'>
+          <IconSwitch weather={item.city.data.weather[0].main} /> &nbsp; &nbsp;
+          <h6>{item.city.data.weather[0].main}</h6>
+        </div>
+      </div>
 
 
     {!this.state.heartIsClicked ? (
@@ -84,6 +82,7 @@ removeFav = () => {
     )}     
       
       </div>
+      </>
      )
 
     })} 

@@ -5,14 +5,29 @@ import Favourites from './pages/Favourites';
 import NotFound from './pages/NotFound';
 
 class App extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			favouritesArr: [],
+		};
+	}
+
+	handleFavs = favouritesArr => {
+		this.setState({
+			favouritesArr: favouritesArr,
+		});
+		console.log('favs in app.js', favouritesArr);
+	};
+
 	render() {
+		const { favouritesArr } = this.state;
 		return (
-			<div className="h-screen bg-blue-50">
+			<div>
 				<Router>
 					<Switch>
 						<Route path="/notfound" component={NotFound} />
-						<Route path="/favourites" component={Favourites} />
-						<Route path="/" component={Home} />
+						<Route path="/favourites" render={() => <Favourites favArr={favouritesArr} />} />
+						<Route path="/" render={() => <Home add={this.handleFavs} />} />
 					</Switch>
 				</Router>
 			</div>
