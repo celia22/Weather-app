@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import IconSwitch from '../IconSwitch/IconSwitch';
 import './CurrentWeather.css';
 
@@ -28,7 +27,7 @@ class CurrentWeather extends Component {
 		const city = this.props;
 		favouritesArr.push(city);
 		console.log("fav", favouritesArr)
-		this.props.addFav(favouritesArr);
+		this.props.add(favouritesArr);
 	};
 
 	render() {

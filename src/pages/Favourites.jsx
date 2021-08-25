@@ -6,7 +6,7 @@ class Favourites extends Component{
   constructor(props){
     super(props)
     this.state = {
-      favouritesArr: this.props.addFav,
+      favouritesArr: this.props.favs,
       heartIsClicked: true,
     }
   }
