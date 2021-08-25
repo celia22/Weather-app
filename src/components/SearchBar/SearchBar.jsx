@@ -17,7 +17,6 @@ class SearchBar extends Component {
 	handleChange = x => {
     const newCity = x.target.value
 		this.setState({ city: newCity });
-    console.log("city request in search", newCity)
 	};
 
 

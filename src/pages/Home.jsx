@@ -55,16 +55,28 @@ class Home extends Component {
 		this.weatherRequest(location);
 	};
 
-	handleFavs = favouritesArr => {
-		this.setState({
-			favouritesArr: favouritesArr,
-		});
-		this.props.add(favouritesArr);
-		console.log('APPJS', favouritesArr);
+
+	handleFavs = (city) => {
+	const { favouritesArr } = this.state;
+	
+	const index = favouritesArr.findIndex(
+		    (location) => location.data.name === city.data.name
+		  );	
+	
+    if (index === -1) {
+  		favouritesArr.push(city);
+			this.setState({
+				favouritesArr: favouritesArr,
+			});
+			this.props.add(favouritesArr);
+			console.log("INDEX", index)
+			console.log('APPJS', favouritesArr);
+    } else {
+      alert("This city is already among your favourites");
+    }		
 	};
 
 	render() {
-		console.log(this.state.location);
 		const { initialCity, location, status, forecast } = this.state;
 
 		return (

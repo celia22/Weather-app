@@ -9,17 +9,19 @@ class CurrentWeather extends Component {
 		this.state = {
 			heartIsClicked: false,
 			favouritesArr: [],
-      city: this.props.city,
+      city: props.city,
 		};
 	}
 
 	handleLike = () => {
+    const { city } = this.state;
 		this.setState({
 			heartIsClicked: !this.state.heartIsClicked,
 		});
+    this.props.add(city)
 	};
 
-  componentDidUpdate(prevProps, heartIsClicked){
+  componentDidUpdate(prevProps){
     if (prevProps.city !== this.props.city){ 
       this.setState({
         city: this.props.city,
@@ -28,13 +30,6 @@ class CurrentWeather extends Component {
     }
   }
 
-
-	addFav = () => {
-		const { favouritesArr, city } = this.state;
-		favouritesArr.push(city);
-		console.log("fav", favouritesArr)
-		this.props.add(favouritesArr);
-	};
 
 	render() {
 		const { city } = this.state;
@@ -75,7 +70,7 @@ class CurrentWeather extends Component {
 								alt='hear icon'
 								onClick={() => {
 									this.handleLike();
-									this.addFav();
+									// this.addFav();
 								}}
 							/>
 						</div>
@@ -87,7 +82,7 @@ class CurrentWeather extends Component {
 								alt='hear icon'
 								onClick={() => {
 									this.handleLike();
-									this.addFav();
+									// this.addFav();
 								}}
 							/>
 						</div>
