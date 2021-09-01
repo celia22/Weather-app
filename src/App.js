@@ -16,12 +16,24 @@ function App() {
     setToDoList(mapped);
   };
 
-  const handleFilter = () => {
-    let filtered = toDoList.filter((task) => {
-      return !task.complete;
-    });
-    setToDoList(filtered);
+  // const handleFilter = () => {
+  //   let filtered = toDoList.filter((task) => {
+  //     return !task.complete;
+  //   });
+  //   setToDoList(filtered);
+  // };
+
+  const removeTask = (index) => {
+    const toDelete = [...toDoList];
+    toDelete.splice(index, 1);
+    setToDoList(toDelete);
   };
+
+  // const removeTask = (index) => {
+  //   const newTasks = [...tasks];
+  //   newTasks.splice(index, 1);
+  //   setTasks(newTasks);
+  // };
 
   const addTask = (userInput) => {
     let copy = [...toDoList];
@@ -38,7 +50,7 @@ function App() {
       <ToDoList
         toDoList={toDoList}
         handleToggle={handleToggle}
-        handleFilter={handleFilter}
+        handleFilter={removeTask}
       />
       <ToDoForm addTask={addTask} />
     </div>
