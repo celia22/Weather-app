@@ -1,0 +1,9 @@
+.searchbar_container {
+	margin: 0.5vh 4vh;
+	position: relative;
+}
+
+.searchbar_logo {
+	position: absolute;
+	right: 6%;
+}

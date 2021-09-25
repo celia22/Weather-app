@@ -1,5 +1,6 @@
 .forecast_card_container {
 	margin: 7vh 10%;
+	height: 50%;
 	width: 80%;
 	background-color: rgba(75, 77, 78, 0.178);
 	border-radius: 5%;
@@ -9,7 +10,7 @@
 .forecast_card {
 	display: flex;
 	color: white;
-	margin: 3vh;
+	margin: 1vh 3vh;
 }
 
 .forecast_card_icons {
@@ -19,4 +20,8 @@
 
 .forecast_card_title {
 	display: flex;
+}
+
+.forecast_card_row {
+	margin-right: 1vh;
 }

@@ -35,11 +35,10 @@ class SearchBar extends Component {
        type="text"
        label="text" 
        name="value"
-       placeholder="Search a new location"
        value={city}
        onChange={this.handleChange}
        /> 
-      <button 
+      <button className="searchbar_logo"
       type="submit" 
       onClick={this.handleNewCity}> 
       {element}
